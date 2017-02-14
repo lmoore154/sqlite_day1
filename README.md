@@ -4,7 +4,7 @@ Explorer Mode
 
 - How many users are there? 
   - 50
-    - SELECT COUNT(id) FROM users;
+    - SELECT COUNT(id) FROM users;    
 - What are the 5 most expensive items?
   - Small Cotton Gloves, Small Wooden Computer, Awesome Granite Pants, Sleek Wooden Hat, Ergonomic Steel Car
     - SELECT title FROM items ORDER BY price DESC LIMIT 5;
@@ -34,5 +34,14 @@ Explorer Mode
 Adventure Mode
 
 - What item was ordered most often? Grossed the most money?
+  - Tie between Ergonomic Concrete Gloves, Practical Rubber Computer, and Incredible Granite Car
+    - SELECT item_id,COUNT(*) as item_count FROM orders GROUP BY item_id ORDER BY item_count DESC;
+    - SELECT title FROM items WHERE id IN (10, 46, 65);
+  - Incredible Granite Car grossed the most with 525240
+    - SELECT (SUM(quantity) * price) AS sum, item_id FROM items INNER JOIN orders ON items.id = orders.item_id GROUP BY item_id ORDER BY sum DESC;
 - What user spent the most?
+  - Phoebe Kshlerin spent 676291
+    - select (sum(quantity) * price) as sum, user_id from orders INNER JOIN items ON orders.item_id = items.id GROUP BY user_id ORDER BY sum DESC;
+    - SELECT first_name, last_name FROM users WHERE id = 11;
 - What were the top 3 highest grossing categories?
+  
