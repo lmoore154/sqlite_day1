@@ -44,4 +44,5 @@ Adventure Mode
     - select (sum(quantity) * price) as sum, user_id from orders INNER JOIN items ON orders.item_id = items.id GROUP BY user_id ORDER BY sum DESC;
     - SELECT first_name, last_name FROM users WHERE id = 11;
 - What were the top 3 highest grossing categories?
-  
+  - Top 3 grossing categories were Sports, Music, Sports & Clothing, and Beauty, Toys & Sports
+    - SELECT (SUM(quantity) * price) AS sum, category FROM orders INNER JOIN items ON orders.item_id = items.id GROUP BY category ORDER BY sum DESC;
