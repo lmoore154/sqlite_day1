@@ -3,18 +3,21 @@
 Explorer Mode
 
 - How many users are there? 
-  - 200
+  - 50
     - SELECT COUNT(id) FROM users;
 - What are the 5 most expensive items?
   - Small Cotton Gloves, Small Wooden Computer, Awesome Granite Pants, Sleek Wooden Hat, Ergonomic Steel Car
-    - SELECT price FROM items ORDER BY price DESC LIMIT 5;
+    - SELECT title FROM items ORDER BY price DESC LIMIT 5;
 - What's the cheapest book? (Does that change for "category is exactly 'book'" versus "category contains 'book'"?)
+  - Ergonomic Granite Chair
+    - SELECT title FROM items WHERE category LIKE '%books%' ORDER BY price ASC;
 - Who lives at "6439 Zetta Hills, Willmouth, WY"? Do they have another address?
   - Corrine Little
-    - SELECT first_name,last_name FROM users INNERJOIN addresses ON users.id = addresses.user_id WHERE street = "6439 Zetta Hills"
+    - SELECT first_name,last_name FROM users INNER JOIN addresses ON users.id = addresses.user_id WHERE street = '6439 Zetta Hills' AND city = 'Willmouth' AND state = 'WY';
   - 54369 Wolff Forgers, Lake Bryon, CA, 31587
-    - SELECT street,city,state,zip FROM addresses INNER JOIN users ON addresses.user_id = users.id WHERE user_id = 40;
+    - SELECT street,city,state,zip FROM addresses INNER JOIN users ON addresses.user_id = users.id WHERE first_name = 'Corrine' AND last_name = 'Little';
 - Correct Virginie Mitchell's address to "New York, NY, 10108".
+  - UPDATE addresses SET city = 'New York', state = 'NY', zip = '10108' WHERE user_id = 39;
 - How much would it cost to buy one of each tool?
   - 46477
     - SELECT SUM(price) FROM items WHERE category LIKE '%tool%';
@@ -25,7 +28,8 @@ Explorer Mode
   - 59241
     - SELECT SUM(price) FROM items WHERE category LIKE '%books%';
 - Simulate buying an item by inserting a User for yourself and an Order for that User.
-
+  - INSERT INTO users (first_name, last_name, email) VALUES ('Laura', 'Moore', 'lmoore@email.com');
+  - INSERT INTO orders (user_id, item_id, quantity, created_at) VALUES (51, 70, 4, CURRENT_TIMESTAMP);
 
 Adventure Mode
 
