@@ -2,14 +2,28 @@
 
 Explorer Mode
 
-- How many users are there?
+- How many users are there? 
+  - 200
+    - SELECT COUNT(id) FROM users;
 - What are the 5 most expensive items?
+  - Small Cotton Gloves, Small Wooden Computer, Awesome Granite Pants, Sleek Wooden Hat, Ergonomic Steel Car
+    - SELECT price FROM items ORDER BY price DESC LIMIT 5;
 - What's the cheapest book? (Does that change for "category is exactly 'book'" versus "category contains 'book'"?)
 - Who lives at "6439 Zetta Hills, Willmouth, WY"? Do they have another address?
+  - Corrine Little
+    - SELECT first_name,last_name FROM users INNERJOIN addresses ON users.id = addresses.user_id WHERE street = "6439 Zetta Hills"
+  - 54369 Wolff Forgers, Lake Bryon, CA, 31587
+    - SELECT street,city,state,zip FROM addresses INNER JOIN users ON addresses.user_id = users.id WHERE user_id = 40;
 - Correct Virginie Mitchell's address to "New York, NY, 10108".
 - How much would it cost to buy one of each tool?
+  - 46477
+    - SELECT SUM(price) FROM items WHERE category LIKE '%tool%';
 - How many total items did we sell?
+  - 2125
+    - SELECT SUM(quantity) FROM orders;
 - How much was spent on books?
+  - 59241
+    - SELECT SUM(price) FROM items WHERE category LIKE '%books%';
 - Simulate buying an item by inserting a User for yourself and an Order for that User.
 
 
