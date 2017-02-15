@@ -41,7 +41,7 @@ Adventure Mode
     - SELECT (SUM(quantity) * price) AS sum, item_id FROM items INNER JOIN orders ON items.id = orders.item_id GROUP BY item_id ORDER BY sum DESC;
 - What user spent the most?
   - Phoebe Kshlerin spent 676291
-    - select (sum(quantity) * price) as sum, user_id from orders INNER JOIN items ON orders.item_id = items.id GROUP BY user_id ORDER BY sum DESC;
+    - SELECT (sum(quantity) * price) AS sum, user_id FROM orders INNER JOIN items ON orders.item_id = items.id GROUP BY user_id ORDER BY sum DESC;
     - SELECT first_name, last_name FROM users WHERE id = 11;
 - What were the top 3 highest grossing categories?
   - Top 3 grossing categories were Sports, Music, Sports & Clothing, and Beauty, Toys & Sports
