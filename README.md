@@ -46,3 +46,10 @@ Adventure Mode
 - What were the top 3 highest grossing categories?
   - Top 3 grossing categories were Sports, Music, Sports & Clothing, and Beauty, Toys & Sports
     - SELECT (SUM(quantity) * price) AS sum, category FROM orders INNER JOIN items ON orders.item_id = items.id GROUP BY category ORDER BY sum DESC;
+
+
+Epic Mode
+
+Complete the exercises on sqlteaching.com as well and add a screenshot of the final screen showing all exercises completed to your README.
+
+<img width="1353" alt="screen shot 2017-02-14 at 8 59 04 pm" src="https://cloud.githubusercontent.com/assets/25327522/22957815/e6cc8502-f2f8-11e6-9262-ac0d375b9c27.png">
